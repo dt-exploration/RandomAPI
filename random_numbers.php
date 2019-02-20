@@ -29,42 +29,42 @@
 */
 if (isset($_POST["submit"])) {
 
-   $min=$_POST["min"];
-   $max=$_POST["max"];
-   $how_many=$_POST["howmany"];
+   $min = $_POST["min"];
+   $max = $_POST["max"];
+   $how_many = $_POST["howmany"];
 
-    $request=array("jsonrpc"=> "2.0", "method"=> "generateIntegers", "params" =>
+    $request = array("jsonrpc"=> "2.0", "method"=> "generateIntegers", "params" =>
                 array(
-                    "apiKey"=> "d116ab95-8579-4196-9426-a46a187e4a8c",
-                     "n"=> $how_many,
-                     "min"=> $min,
-                     "max"=> $max,
-                     "replacement"=> true) ,
+                    "apiKey" => "d116ab95-8579-4196-9426-a46a187e4a8c",
+                     "n" => $how_many,
+                     "min" => $min,
+                     "max" => $max,
+                     "replacement" => true) ,
                    "id"=>42);
 
-    $data=json_encode($request);
+    $data = json_encode($request);
 
-    $url="https://api.random.org/json-rpc/1/invoke";
-    $ch=curl_init();
+    $url = "https://api.random.org/json-rpc/1/invoke";
+    $ch  = curl_init();
 
-    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                    'Content-Type: application/json',
                    'Content-Length: ' . strlen($data))
                );
-    $result=curl_exec($ch);
+    $result = curl_exec($ch);
 
 //j_decoded kastovano kao niz jer ako je string $result prazan, sto je cesto
 //slucaj, onda json decode vraca null i
 //prelomi program u foreachu sa greskom
 
-    $j_decoded=(array) json_decode($result, true);
-    $a=$j_decoded["result"];
-    $b=$a["random"];
-    $c=$b["data"];
+    $j_decoded = (array) json_decode($result, true);
+    $a = $j_decoded["result"];
+    $b = $a["random"];
+    $c = $b["data"];
 
     foreach ($c as $value) {
         echo "$value<br>";
