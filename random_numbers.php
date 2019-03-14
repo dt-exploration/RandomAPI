@@ -70,21 +70,6 @@ if (isset($_POST["submit"])) {
         echo "$value<br>";
     }
 
-/*
-$options = array(
-  'http' => array(
-    'method'  => 'POST',
-    'content' => json_encode( $request ),
-    'header'=>  "Content-Type: application/json\r\n" .
-                "Accept: application/json\r\n"
-    )
-);
-
-$context  = stream_context_create( $options );
-$result = file_get_contents( "https://api.random.org/json-rpc/1/invoke", false, $context );
-$response = json_decode( $result );
-var_dump($response);
-*/
 }
 
 ?>
