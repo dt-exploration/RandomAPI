@@ -33,14 +33,14 @@ if (isset($_POST["submit"])) {
    $max = $_POST["max"];
    $how_many = $_POST["howmany"];
 
-    $request = array("jsonrpc"=> "2.0", "method"=> "generateIntegers", "params" =>
-                array(
-                    "apiKey" => "d116ab95-8579-4196-9426-a46a187e4a8c",
-                     "n" => $how_many,
-                     "min" => $min,
-                     "max" => $max,
-                     "replacement" => true) ,
-                   "id"=>42);
+    $request =  array("jsonrpc"=> "2.0", "method"=> "generateIntegers", 
+                      "params" => array(
+                                        "apiKey" => "d116ab95-8579-4196-9426-a46a187e4a8c",
+                                        "n" => $how_many,
+                                        "min" => $min,
+                                        "max" => $max,
+                                        "replacement" => true) ,
+                                        "id"=>42);
 
     $data = json_encode($request);
 
