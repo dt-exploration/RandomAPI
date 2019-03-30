@@ -33,14 +33,16 @@ if (isset($_POST["submit"])) {
    $max = $_POST["max"];
    $how_many = $_POST["howmany"];
 
-    $request =  array("jsonrpc"=> "2.0", "method"=> "generateIntegers", 
-                      "params" => array(
-                                        "apiKey" => "d116ab95-8579-4196-9426-a46a187e4a8c",
+   $request =  array("jsonrpc" => "2.0", 
+                     "method" => "generateIntegers", 
+                     "params"  => array("apiKey" => "d116ab95-8579-4196-9426-a46a187e4a8c",
                                         "n" => $how_many,
                                         "min" => $min,
                                         "max" => $max,
-                                        "replacement" => true) ,
-                                        "id"=>42);
+                                        "replacement" => true
+                                       ),
+                     "id" => 42
+                     );
 
     $data = json_encode($request);
 
@@ -51,9 +53,9 @@ if (isset($_POST["submit"])) {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                   'Content-Type: application/json',
-                   'Content-Length: ' . strlen($data))
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+                                               'Content-Length: ' . strlen($data)
+                                              )
                );
     $result = curl_exec($ch);
 
